@@ -1,25 +1,40 @@
+/* Some helper functions for logging in and out, 
+   as well as printing out data about the current user. 
+   Should output:
+
+/* Expected output:
+   Object {email: "john@doe.com", username: "John Doe", friends: [0,1,2,3]}
+   0, 1, 2, 3,
+   Not logged in */
+
 var currentUser = null;
 
-var login = function(){
-  var currentUser = email;
+var login = function(email){
+  currentUser = email;
+}
+
 var logout = function(){
   currentUser = null;
+  console.log("Not logged in");
 }
-}
+
 var getLoggedInUser = function(){
-  getUserDetails(currentUser, function(result){
-console.log(result);
+  getUserDetails (currentUser, function(result){
+    console.log(result);
     //print out friends list
-  var output = '';
-    for(var id in result.friends){
-  output += id + ', ';
-    console.log(output);}
+    var output = '';
+    for( var id in result.friends){
+        output += id + ', ';
+    };
+        console.log(output);
+  })
+}
+
 
 login('john@doe.com');
 getLoggedInUser();
 logout();
 getLoggedInUser();
-
 
 
 
