@@ -1,13 +1,31 @@
+/**
+Given some mock functions for testing without a database, 
+this intern was tasked with creating a function that gets user details.
+
+This should print four objects that match:
+
+{
+  details: {name: "John Doe", uid: "0"},
+  updates: [
+    "Finally Home!",
+    "Just had an entire chocolate cake. Regrets = 0.",
+    "My dog is trying to eat the cat. Brb."
+  ]
+}
+**/
+
 var getUserDetails = function(uid){
-getFriends(uid, function(friends){
-  for(var friend in friends.friends){
-getUpdates(friend,
-function(updates){
-  if(updates.length > 0){
-  getUser(friend, function(details){
-    printUser(details, updates);
-)
-  })
+  getFriends(uid, function(friends){
+    for(var friend in friends.friends){
+      getUpdates(friend, function(updates){
+        if(updates.length > 0){
+          getUser(friend, function(details){
+            printUser(details, updates);
+          })
+        }
+      });
+    };
+  });
 }
 
 //test with user 0
